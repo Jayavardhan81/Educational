@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            /* font-family: Arial, sans-serif; */
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -328,14 +328,18 @@ a {
       </footer>
 
     <script>
-        function toggleCourses(courseId) {
-            var courseSection = document.getElementById(courseId);
-            if (courseSection.style.display === "none" || courseSection.style.display === "") {
-                courseSection.style.display = "block";
-            } else {
-                courseSection.style.display = "none";
-            }
+ function toggleCourses(courseId) {
+    // Hide all course lists
+    document.querySelectorAll('.courses').forEach(course => {
+        if (course.id !== courseId) {
+            course.style.display = 'none';
         }
+    });
+
+    // Toggle the visibility of the selected course list
+    const selectedCourse = document.getElementById(courseId);
+    selectedCourse.style.display = selectedCourse.style.display === 'block' ? 'none' : 'block';
+}
     </script>
 </body>
 </html>
