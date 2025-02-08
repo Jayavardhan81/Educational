@@ -178,6 +178,7 @@ a {
     .sub-heading {
         font-size: 14px; /* Further reduce font size for smaller screens */
         padding: 8px 15px; /* Adjust padding */
+        margin:12px;
     }
 }
 
@@ -270,7 +271,7 @@ a {
     }
 }
 
-/* Carousel Section */
+Carousel Section
 .carousel-section {
     padding: 20px;
     text-align: center;
