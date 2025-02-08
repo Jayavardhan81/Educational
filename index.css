@@ -517,7 +517,7 @@ a {
     color: #fff; /* White text color */
     text-align: center; /* Center-align content */
     padding: 20px 10px; /* Spacing around content */
-    margin-top: 0; /* Remove extra space from the footer */
+    margin-top: 0px; /* Remove extra space from the footer */
 }
 
 .footer-content {
