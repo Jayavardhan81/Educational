@@ -284,7 +284,7 @@ a {
     white-space: nowrap; /* Prevents wrapping */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 20px 30px;
     gap: 20px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
@@ -302,9 +302,9 @@ a {
     flex: 0 0 auto;
     scroll-snap-align: start;
     width: 100%;
-    max-width: 300px; /* Adjusts the size */
+    max-width: 250px; /* Adjusts the size */
     transition: transform 0.3s ease;
-    margin: 0 15px; /* Spacing between items */
+    margin: 0 10px; /* Spacing between items */
 }
 
 /* Image styling */
@@ -351,10 +351,11 @@ a {
 /* For mobile screens */
 @media (max-width: 768px) {
     .carousel-item {
-        max-width: 80vw;  /* Adjusts width for smaller screens */
+        max-width: 80vw;
+        margin : 0 8px;
     }
     .carousel-container {
-        padding: 5px;  /* Reduced padding */
+        padding: 10px;  /* Reduced padding */
     }
 }
 
