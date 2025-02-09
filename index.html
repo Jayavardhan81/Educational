@@ -188,44 +188,51 @@
 
 
 <script>
- document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector('.carousel-track');
-    const items = document.querySelectorAll('.carousel-item');
-    const btnLeft = document.querySelector('.left-btn');
-    const btnRight = document.querySelector('.right-btn');
+ document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector(".carousel");
+    const leftButton = document.querySelector(".scroll-btn.left-btn");
+    const rightButton = document.querySelector(".scroll-btn.right-btn");
 
-    let currentIndex = 0;
-    const visibleItems = 3; // Number of visible items at a time
-    const totalItems = items.length;
+    const scrollAmount = 300; // Amount to scroll per button click
 
-    function updateCarousel() {
-        const itemWidth = items[0].offsetWidth;
-        track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-    }
-
-    // Scroll left
-    btnLeft.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex -= visibleItems;
-            if (currentIndex < 0) currentIndex = 0; // Prevent negative index
-        }
-        updateCarousel();
+    // Scroll left when left button is clicked
+    leftButton.addEventListener("click", () => {
+        carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
     });
 
-    // Scroll right
-    btnRight.addEventListener('click', () => {
-        if (currentIndex < totalItems - visibleItems) {
-            currentIndex += visibleItems;
-            if (currentIndex > totalItems - visibleItems) {
-                currentIndex = totalItems - visibleItems; // Prevent overscrolling
-            }
-        }
-        updateCarousel();
+    // Scroll right when right button is clicked
+    rightButton.addEventListener("click", () => {
+        carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
     });
 
-    // Initialize carousel position
-    updateCarousel();
+    // Enable touch/mouse dragging for scrolling
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
+
+    carousel.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+        isDragging = false;
+    });
+
+    carousel.addEventListener("mouseup", () => {
+        isDragging = false;
+    });
+
+    carousel.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2; // Adjust the scroll speed
+        carousel.scrollLeft = scrollLeft - walk;
+    });
 });
+
 
 
 

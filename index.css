@@ -271,49 +271,57 @@ a {
     }
 }
 
-Carousel Section
+/* Carousel Section */
 .carousel-section {
     padding: 20px;
     text-align: center;
 }
 
-.carousel-section h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #181D38;
-    font-weight: bold;
-}
-
 .carousel-container {
     position: relative;
-    overflow: hidden;
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap; /* Prevents wrapping */
     max-width: 1200px;
     margin: 0 auto;
+    padding: 40px;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
 }
 
+/* Carousel wrapper */
 .carousel {
     display: flex;
+    gap: 20px; /* Even gap between images */
     transition: transform 0.5s ease-in-out;
-    width: fit-content;
 }
 
+/* Individual carousel items */
 .carousel-item {
-    min-width: calc(100% / 3);
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 100%;
+    max-width: 300px; /* Adjusts the size */
     transition: transform 0.3s ease;
+    margin: 0 15px; /* Spacing between items */
 }
 
+/* Image styling */
 .carousel-item img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
+/* Hover effect */
 .carousel-item img:hover {
-    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow instead of scaling */
 }
 
+/* Navigation buttons */
 .scroll-btn {
     position: absolute;
     top: 50%;
@@ -338,91 +346,40 @@ Carousel Section
     background-color: #034651;
 }
 
-.carousel-section h3 {
-    margin-top: 15px;
-    font-size: 18px;
-    color: #333;
-}
+/* Responsive adjustments */
 
-
-.explore-heading {
-    text-align: center;
-    font-size: 28px;
-    color: #181D38;
-    margin: 20px 0; /* Space above and below the heading */
-    font-weight: bold;
-}
-/* -------------------------------------------------------------------------------- */
-/* General styles for the carousel */
-/* Carousel Section */
-.carousel-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow-x: auto; /* Enable horizontal scroll */
-    padding: 10px;
-    gap: 10px; /* Space between the images */
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
-  }
-  
-  .carousel {
-    display: flex;
-    gap: 10px;
-    scroll-snap-type: x mandatory;
-  }
-  
-  .carousel-item {
-    flex: 0 0 auto; /* Prevents item from stretching */
-    scroll-snap-align: start;
-    width: 100%;
-    max-width: 300px; /* Maximum width of each item */
-    transition: transform 0.3s ease; /* Smooth transition on scroll */
-  }
-  
-  .carousel-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px; /* Optional: Adds rounded corners to images */
-  }
-  
-  /* For mobile screens */
-  @media (max-width: 768px) {
+/* For mobile screens */
+@media (max-width: 768px) {
     .carousel-item {
-      max-width: 80vw; /* Decreases the width of the image on mobile */
+        max-width: 80vw;  /* Adjusts width for smaller screens */
     }
     .carousel-container {
-      padding: 5px;
+        padding: 5px;  /* Reduced padding */
     }
-  }
-  
-  /* For tablet and smaller desktop screens */
-  @media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* For tablet and smaller desktop screens */
+@media (min-width: 768px) and (max-width: 1024px) {
     .carousel-item {
-      max-width: 33.33%; /* Shows 3 items at a time */
+        max-width: 33.33%; /* Shows 3 items at a time */
     }
-  }
-  
-  /* For large desktop screens */
-  @media (min-width: 1025px) {
+}
+
+/* For large desktop screens */
+@media (min-width: 1025px) {
     .carousel-item {
-      max-width: 30%; /* Adjusts to show 3 items at once */
+        max-width: 30%; /* Adjusts to show 3 items at once */
     }
-  }
-  
-  /* Add spacing to the first item */
-  .carousel-container::before {
+}
+
+/* Add spacing to the first and last items */
+.carousel-container::before,
+.carousel-container::after {
     content: '';
     width: 10px;
     display: inline-block;
-  }
-  
-  .carousel-container::after {
-    content: '';
-    width: 10px;
-    display: inline-block;
-  }
-  
+}
+
   
   /* Testimonials Section */
 .testimonials {
